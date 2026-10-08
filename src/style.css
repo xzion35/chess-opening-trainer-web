@@ -1,0 +1,133 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f3f2ef;
+  --fg: #1d1d1b;
+  --surface: #e4e1db;
+  --border: #c9c5bc;
+  --error: #c0392b;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1f1e1c;
+    --fg: #ecebe7;
+    --surface: #2e2c29;
+    --border: #46433e;
+    --error: #ff7b6b;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  min-height: 100dvh;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+header {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px 0;
+  width: 100%;
+  max-width: 640px;
+}
+
+button,
+.button {
+  font: inherit;
+  font-size: 1rem;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+button:focus-visible,
+.button:focus-within {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Chessground a besoin d'un conteneur carré de taille explicite */
+#board {
+  width: min(100vw, calc(100dvh - 150px), 640px);
+  aspect-ratio: 1;
+  touch-action: none; /* pas de scroll pendant le glisser-déposer */
+}
+
+.bar {
+  width: min(100vw, 640px);
+  padding: 0 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  font-size: 1.1rem;
+}
+
+#status {
+  flex: 1 1 100%;
+  min-height: 1.4em;
+}
+
+#mistakes {
+  color: var(--error);
+}
+
+#promo {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgb(0 0 0 / 0.45);
+  z-index: 10;
+}
+
+#promo[hidden] {
+  display: none;
+}
+
+.promo-box {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.promo-box button {
+  font-size: 2.6rem;
+  line-height: 1;
+  padding: 6px 12px;
+}

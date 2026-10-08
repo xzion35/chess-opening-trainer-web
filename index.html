@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <title>Chess Trainer</title>
+  </head>
+  <body>
+    <header>
+      <label class="button">
+        Open PGN
+        <input
+          type="file"
+          id="pgn"
+          accept=".pgn,application/x-chess-pgn,text/plain"
+          hidden
+        />
+      </label>
+      <button id="reset" type="button">Reset Board</button>
+    </header>
+
+    <main>
+      <div id="board"></div>
+
+      <div class="bar">
+        <span id="status" role="status" aria-live="polite"></span>
+        <button id="hint" type="button" disabled>Show Move</button>
+        <span id="progress">0/0</span>
+        <span id="mistakes"></span>
+      </div>
+    </main>
+
+    <div id="promo" hidden>
+      <div class="promo-box" role="dialog" aria-label="Choose promotion piece">
+        <button type="button" data-role="queen">♕</button>
+        <button type="button" data-role="rook">♖</button>
+        <button type="button" data-role="bishop">♗</button>
+        <button type="button" data-role="knight">♘</button>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
